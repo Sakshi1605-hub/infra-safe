@@ -6,6 +6,17 @@
 
   <style>
     body {
+      <label>Select Infrastructure</label>
+<select id="infra">
+  <option value="bridge">Bridge</option>
+  <option value="road">Road</option>
+  <option value="building">Building</option>
+</select>
+
+<button onclick="checkRisk()">Check Risk</button>
+
+<div id="result"></div>
+
       font-family: Inter, Arial, sans-serif;
       background: #f3f6fb;
       display: flex;
@@ -188,6 +199,24 @@
     document.getElementById("statusBox").innerHTML = "🚨 STATUS: ABNORMAL";
     document.getElementById("alertSection").style.display = "block";
   }
+</script>
+<script>
+function checkRisk() {
+  const infra = document.getElementById("infra").value;
+  let message = "";
+
+  if (infra === "bridge") {
+    message = "⚠ Bridge Risk: HIGH – Immediate inspection required";
+  } 
+  else if (infra === "road") {
+    message = "⚠ Road Risk: MEDIUM – Maintenance suggested";
+  } 
+  else if (infra === "building") {
+    message = "✅ Building Risk: LOW – Safe condition";
+  }
+
+  document.getElementById("result").innerHTML = message;
+}
 </script>
 
 </body>
